@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gede Okta — Web & Mobile Developer. 5+ years building Flutter apps and modern web experiences.">
+    <title>Gede Okta — Web & Mobile Developer</title>
+    <link rel="icon" type="image/png" href="img/developer-services-icon-21.png" sizes="96x96">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0b0d12;
+            --bg-2: #11141b;
+            --surface: #161a23;
+            --surface-2: #1c2230;
+            --border: #252b38;
+            --text: #e6e9ef;
+            --text-dim: #8b93a7;
+            --accent: #7c5cff;
+            --accent-2: #22d3ee;
+            --accent-grad: linear-gradient(135deg, #7c5cff 0%, #22d3ee 100%);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --shadow: 0 10px 40px -10px rgba(124, 92, 255, 0.25);
+            --maxw: 1180px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Subtle ambient gradient */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%; left: 50%;
+            transform: translateX(-50%);
+            width: 1000px; height: 1000px;
+            background: radial-gradient(circle, rgba(124, 92, 255, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        a { color: inherit; text-decoration: none; transition: color 0.2s; }
+
+        .container {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== NAV ===== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background: rgba(11, 13, 18, 0.7);
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .nav.scrolled { border-bottom-color: var(--border); }
+        .nav-inner {
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .brand-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--accent-grad);
+            box-shadow: 0 0 16px var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dim);
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text); }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text);
+            font-size: 24px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            background: var(--surface);
+            color: var(--text-dim);
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 28px;
+        }
+        .hero-tag .pulse {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+        .hero h1 {
+            font-size: clamp(40px, 7vw, 84px);
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+        .hero h1 .accent {
+            background: var(--accent-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            color: var(--text-dim);
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--accent-grad);
+            color: #0b0d12;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-ghost:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+        }
+
+        /* ===== SECTIONS ===== */
+        section.page {
+            padding: 100px 0;
+            position: relative;
+        }
+        .section-head {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent-2);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+        .section-head h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 16px;
+        }
+        .section-head p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--text-dim);
+            font-size: 16px;
+        }
+
+        /* ===== ABOUT / SUMMARY ===== */
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 48px;
+            color: var(--text-dim);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 40px;
+        }
+        .skill-chip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+            transition: transform 0.25s, border-color 0.25s, background 0.25s;
+        }
+        .skill-chip:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            background: var(--surface-2);
+        }
+        .skill-chip .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent-grad);
+            flex-shrink: 0;
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .project {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            text-align: left;
+            color: inherit;
+            font: inherit;
+            width: 100%;
+            padding: 0;
+        }
+        .project:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: var(--shadow);
+        }
+        .project:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 4px;
+        }
+        .project-image {
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .project:hover .project-image img { transform: scale(1.07); }
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11, 13, 18, 0) 40%, rgba(11, 13, 18, 0.7) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .project:hover .project-overlay { opacity: 1; }
+        .project-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--accent-grad);
+            color: #0b0d12;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .project-view svg { width: 14px; height: 14px; }
+
+        /* ===== LIGHTBOX MODAL ===== */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(5, 6, 10, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .lightbox.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-content {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            max-width: 880px;
+            width: 100%;
+            max-height: 92vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.96);
+            transition: transform 0.3s;
+        }
+        .lightbox.open .lightbox-content { transform: scale(1); }
+        .lightbox-image {
+            background: #000;
+            max-height: 60vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .lightbox-image img {
+            max-width: 100%;
+            max-height: 60vh;
+            object-fit: contain;
+            display: block;
+        }
+        .lightbox-image.multi {
+            flex-direction: column;
+            max-height: none;
+            background: var(--bg-2);
+            overflow: visible;
+        }
+        .lightbox-image.multi img {
+            width: 100%;
+            max-height: none;
+            height: auto;
+            object-fit: contain;
+        }
+        .lightbox-image.multi img + img { margin-top: 4px; }
+        .lightbox-body {
+            padding: 28px 32px 32px;
+        }
+        .lightbox-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-2);
+            margin-bottom: 10px;
+        }
+        .lightbox-body h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .lightbox-body p {
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            width: 40px; height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(22, 26, 35, 0.9);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .lightbox-close:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #0b0d12;
+        }
+        .lightbox-close svg { width: 18px; height: 18px; }
+        body.lightbox-open { overflow: hidden; }
+        .project-body {
+            padding: 22px 24px 26px;
+        }
+        .project-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-2);
+            margin-bottom: 8px;
+        }
+        .project h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+        .project .stack {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* ===== PROFILE ===== */
+        .profile-card {
+            max-width: 480px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .profile-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .profile-image {
+            position: relative;
+            height: 260px;
+            overflow: hidden;
+        }
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, var(--surface) 100%);
+            pointer-events: none;
+        }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-body {
+            padding: 16px 32px 36px;
+            position: relative;
+        }
+        .profile-body h3 {
+            font-size: 22px;
+            margin-bottom: 14px;
+        }
+        .profile-body p {
+            color: var(--text-dim);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social {
+            width: 44px; height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            transition: color 0.2s, background 0.2s, transform 0.2s, border-color 0.2s;
+        }
+        .social:hover {
+            color: var(--text);
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .social svg { width: 18px; height: 18px; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 40px 0 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+        footer a { color: var(--text); font-weight: 500; }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px; height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--accent-grad);
+            color: #0b0d12;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(10px);
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 50;
+            box-shadow: var(--shadow);
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+        .scroll-top svg { width: 20px; height: 20px; }
+
+        /* ===== REVEAL ANIMATION ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(11, 13, 18, 0.95);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                gap: 0;
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-10px);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s, transform 0.25s;
+            }
+            .nav-links.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                border-bottom: 1px solid var(--border);
+                font-size: 15px;
+            }
+            .nav-links li:last-child a { border-bottom: none; }
+
+            .hero { padding: 100px 0 60px; min-height: auto; }
+            section.page { padding: 70px 0; }
+            .about-card { padding: 28px; font-size: 15px; }
+            .section-head { margin-bottom: 40px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ===== NAV ===== -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#top" class="brand">
+                <span class="brand-dot"></span>
+                <span>Gede Okta</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="#profile">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top">
+        <div class="container">
+            <span class="hero-tag reveal">
+                <span class="pulse"></span>
+                Available for opportunities
+            </span>
+            <h1 class="reveal">
+                Hi, I'm Okta.<br>
+                <span class="accent">Web & Mobile Developer.</span>
+            </h1>
+            <p class="reveal">
+                5+ years crafting high-quality Flutter apps and modern web experiences. Focused on seamless, responsive, and visually engaging products across platforms.
+            </p>
+            <div class="hero-ctas reveal">
+                <a href="#works" class="btn btn-primary">
+                    View My Work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+                <a href="#profile" class="btn btn-ghost">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT / SUMMARY ===== -->
+    <section class="page" id="about">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-eyebrow">About Me</span>
+                <h2>A passion for building across platforms.</h2>
+                <p>Over the last 5 years, I've successfully built and launched numerous applications — from mobile apps on the Play Store and App Store, to React-based PWAs and web platforms used in production.</p>
+            </div>
+            <div class="about-card reveal">
+                A Web & Mobile Developer with over 5 years of experience in designing, developing, and deploying high-quality Flutter Hybrid Mobile Apps, Progressive Web Apps (PWA) built with React, and modern web applications. Proficient in programming languages and frameworks such as Dart (Flutter), Java, Swift, JavaScript, TypeScript, React, and Laravel. Focused on delivering seamless, responsive, and visually engaging user experiences across mobile and web.
+                <br><br>
+                I have hands-on experience building installable, offline-capable PWA experiences with React — covering service workers, app manifests, push notifications, and native bridge integration with Flutter WebView shells. Passionate about innovation and committed to staying updated with the latest technologies, I bring a user-centered approach to development and a strong understanding of cross-platform compatibility.
+                <br><br>
+                I'm eager to bring my skills and dedication to a dynamic team where I can help deliver impactful digital solutions across mobile, web, and PWA platforms.
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section class="page" id="skills">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-eyebrow">Tech Stack</span>
+                <h2>Skills & Tools</h2>
+                <p>The technologies I use daily to bring ideas to life.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-chip reveal"><span class="dot"></span>Dart Flutter (Android & iOS)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Java for Android</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Swift for iOS</div>
+                <div class="skill-chip reveal"><span class="dot"></span>State Management (GetX, BLoC, Provider)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>React.js</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Progressive Web Apps (PWA)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Next.js</div>
+                <div class="skill-chip reveal"><span class="dot"></span>TypeScript</div>
+                <div class="skill-chip reveal"><span class="dot"></span>JavaScript (ES6+)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Tailwind CSS</div>
+                <div class="skill-chip reveal"><span class="dot"></span>HTML5 & CSS3</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Node.js</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Laravel PHP Framework</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Firebase (Auth, Firestore, FCM)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>RESTful API Integration</div>
+                <div class="skill-chip reveal"><span class="dot"></span>App Deployment (Play Store, App Store)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Testing & Debugging (JUnit, Mockito)</div>
+                <div class="skill-chip reveal"><span class="dot"></span>Git & Version Control</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PORTFOLIO ===== -->
+    <section class="page" id="works">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-eyebrow">Selected Work</span>
+                <h2>Project Portfolio</h2>
+                <p>Highlights from apps I've designed, built, and shipped.</p>
+            </div>
+            <div class="portfolio-grid">
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/unnis.jpg"
+                    data-tag="Mobile App"
+                    data-title="UNNIS — E-Commerce"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="K-beauty e-commerce & skincare subscription app built with Flutter. Features product browsing, skin analysis, live streaming, community feed, and subscription management.">
+                    <div class="project-image">
+                        <img src="img/portfolio/unnis.jpg" alt="UNNIS E-commerce App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>UNNIS — E-Commerce</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/unnis-pwa.jpg"
+                    data-tag="PWA · Web"
+                    data-title="UNNIS — PWA Web App"
+                    data-stack="React · TypeScript · PWA"
+                    data-desc="Progressive Web App version of UNNIS built with React and TypeScript. Installable, offline-capable, with service worker caching, push notifications, and seamless native bridge integration with the Flutter WebView shell.">
+                    <div class="project-image">
+                        <img src="img/portfolio/unnis-pwa.jpg" alt="UNNIS PWA Web App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">PWA · Web</span>
+                        <h3>UNNIS — PWA Web App</h3>
+                        <p class="stack">React · TypeScript · PWA</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/weu-pwa.jpg"
+                    data-tag="PWA · Web"
+                    data-title="WE:U — PWA Web App"
+                    data-stack="React · TypeScript · PWA"
+                    data-desc="WE:U Progressive Web App built with React and TypeScript. Delivers a fast, installable, and offline-ready web experience with service workers, responsive UI, and modern web standards.">
+                    <div class="project-image">
+                        <img src="img/portfolio/weu-pwa.jpg" alt="WE:U PWA Web App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">PWA · Web</span>
+                        <h3>WE:U — PWA Web App</h3>
+                        <p class="stack">React · TypeScript · PWA</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/duamobil.jpg"
+                    data-tag="Mobile App"
+                    data-title="Dua Mobil"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="Cross-platform mobile application developed in Flutter for automotive listings and management.">
+                    <div class="project-image">
+                        <img src="img/portfolio/duamobil.jpg" alt="Dua Mobil App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>Dua Mobil</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/pas-mobile.jpg"
+                    data-tag="Mobile App"
+                    data-title="E-Market PAS"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="An e-market mobile application built with Flutter, enabling vendors and buyers to transact on a single platform.">
+                    <div class="project-image">
+                        <img src="img/portfolio/pas-mobile.jpg" alt="E-Market PAS App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>E-Market PAS</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/admin-pas.png"
+                    data-tag="Web App"
+                    data-title="E-Market PAS — Admin"
+                    data-stack="Laravel Framework"
+                    data-desc="Admin dashboard for the E-Market PAS marketplace. Built with Laravel for vendor management, product moderation, order tracking, and sales analytics.">
+                    <div class="project-image">
+                        <img src="img/portfolio/admin-pas.png" alt="E-Market PAS Admin Dashboard">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Web App</span>
+                        <h3>E-Market PAS — Admin</h3>
+                        <p class="stack">Laravel Framework</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/admin-event.jpg"
+                    data-tag="Web App"
+                    data-title="Registration Event — Admin"
+                    data-stack="Laravel Framework"
+                    data-desc="Admin dashboard for event registration management. Built with Laravel for participant tracking, ticketing, and reporting.">
+                    <div class="project-image">
+                        <img src="img/portfolio/admin-event.jpg" alt="Event Admin Web">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Web App</span>
+                        <h3>Registration Event — Admin</h3>
+                        <p class="stack">Laravel Framework</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/landing-page-event.jpg"
+                    data-tag="Web App"
+                    data-title="Registration Event — Landing"
+                    data-stack="Laravel Framework"
+                    data-desc="Public-facing landing page for event registration with a smooth form flow and responsive design.">
+                    <div class="project-image">
+                        <img src="img/portfolio/landing-page-event.jpg" alt="Event Landing Page">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Web App</span>
+                        <h3>Registration Event — Landing</h3>
+                        <p class="stack">Laravel Framework</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/web-monitoring-1.png"
+                    data-images="img/portfolio/web-monitoring-1.png, img/portfolio/web-monitoring-2.png"
+                    data-tag="Web App"
+                    data-title="Web Monitoring System"
+                    data-stack="Laravel Framework"
+                    data-desc="Web-based monitoring system built with Laravel. Provides real-time dashboards, data visualization, and reporting for operational oversight and decision making.">
+                    <div class="project-image">
+                        <img src="img/portfolio/web-monitoring-1.png" alt="Web Monitoring System">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Web App</span>
+                        <h3>Web Monitoring System</h3>
+                        <p class="stack">Laravel Framework</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/web-portal.png"
+                    data-tag="Web App"
+                    data-title="Company Profile — Web Portal"
+                    data-stack="Laravel Framework"
+                    data-desc="Company profile web portal built with Laravel. Includes a public-facing site for company branding and content, plus an admin panel for managing pages, articles, and assets.">
+                    <div class="project-image">
+                        <img src="img/portfolio/web-portal.png" alt="Company Profile Web Portal">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Web App</span>
+                        <h3>Company Profile — Web Portal</h3>
+                        <p class="stack">Laravel Framework</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/limo.jpg"
+                    data-tag="Mobile App"
+                    data-title="Ride App"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="Passenger-side ride hailing app with real-time tracking, fare estimation, and seamless booking flow.">
+                    <div class="project-image">
+                        <img src="img/portfolio/limo.jpg" alt="Ride App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>Ride App</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/limo-driver.jpg"
+                    data-tag="Mobile App"
+                    data-title="Driver App"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="Driver-side companion to the Ride App: live order acceptance, navigation, earnings, and trip history.">
+                    <div class="project-image">
+                        <img src="img/portfolio/limo-driver.jpg" alt="Driver App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>Driver App</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+                <button type="button" class="project reveal"
+                    data-image="img/portfolio/limo-delivery.jpg"
+                    data-tag="Mobile App"
+                    data-title="Delivery App"
+                    data-stack="Flutter · Android & iOS"
+                    data-desc="Last-mile delivery app for couriers, featuring multi-stop routing, proof-of-delivery capture, and earnings tracking.">
+                    <div class="project-image">
+                        <img src="img/portfolio/limo-delivery.jpg" alt="Delivery App">
+                        <div class="project-overlay"><span class="project-view">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                    </div>
+                    <div class="project-body">
+                        <span class="project-tag">Mobile App</span>
+                        <h3>Delivery App</h3>
+                        <p class="stack">Flutter · Android & iOS</p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+                <div class="lightbox-content" role="document">
+                    <div class="lightbox-image"></div>
+                    <div class="lightbox-body">
+                        <span class="lightbox-tag" id="lightboxTag"></span>
+                        <h3 id="lightboxTitle"></h3>
+                        <p class="stack" id="lightboxStack" style="color: var(--accent-2); font-size: 13px; font-weight: 600; margin-bottom: 12px;"></p>
+                        <p id="lightboxDesc"></p>
+                    </div>
+                    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROFILE / CONTACT ===== -->
+    <section class="page" id="profile">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="section-eyebrow">Get In Touch</span>
+                <h2>Let's build something great.</h2>
+                <p>Open to collaboration and new opportunities. Reach out on the platforms below.</p>
+            </div>
+            <div class="profile-card reveal">
+                <div class="profile-image">
+                    <img src="img/team/okta-new.jpg" alt="I Gede Okta Budi Mardana">
+                </div>
+                <div class="profile-body">
+                    <h3>I Gede Okta Budi Mardana</h3>
+                    <p>A passionate developer with 5+ years of expertise in Flutter, React, TypeScript, and Laravel — eager to contribute to innovative web and mobile solutions.</p>
+                    <div class="socials">
+                        <a href="https://www.linkedin.com/in/gede-okta" class="social" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/gedeoktaa_/" class="social" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.71 3.71 0 0 1-1.38-.9 3.71 3.71 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.55-.79.31-1.46.72-2.13 1.38A5.88 5.88 0 0 0 .62 4.14c-.3.76-.5 1.63-.55 2.91C.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.55 2.91.31.79.72 1.46 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.63.5 2.91.55C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.55a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.63.55-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.55-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.62c-.76-.3-1.63-.5-2.91-.55C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+                        </a>
+                        <a href="mailto:" class="social" aria-label="Email">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Designed & Developed by <a href="#top">Gede Okta</a></p>
+        </div>
+    </footer>
+
+    <!-- Scroll to top -->
+    <a href="#top" class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+    </a>
+
+    <script>
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Nav scroll state
+        const nav = document.getElementById('nav');
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            nav.classList.toggle('scrolled', y > 20);
+            scrollTop.classList.toggle('visible', y > 400);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+        // Reveal on scroll
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lbImageWrap = document.querySelector('.lightbox-image');
+        const lbTag = document.getElementById('lightboxTag');
+        const lbTitle = document.getElementById('lightboxTitle');
+        const lbStack = document.getElementById('lightboxStack');
+        const lbDesc = document.getElementById('lightboxDesc');
+        const lbClose = document.getElementById('lightboxClose');
+
+        function openLightbox(data) {
+            const sources = data.images
+                ? data.images.split(',').map(s => s.trim()).filter(Boolean)
+                : [data.image];
+            lbImageWrap.innerHTML = '';
+            lbImageWrap.classList.toggle('multi', sources.length > 1);
+            sources.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = data.title;
+                lbImageWrap.appendChild(img);
+            });
+            lbTag.textContent = data.tag;
+            lbTitle.textContent = data.title;
+            lbStack.textContent = data.stack;
+            lbDesc.textContent = data.desc;
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lightbox-open');
+            lightbox.querySelector('.lightbox-content').scrollTop = 0;
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('lightbox-open');
+        }
+
+        document.querySelectorAll('.project').forEach(btn => {
+            btn.addEventListener('click', () => openLightbox({
+                image: btn.dataset.image,
+                images: btn.dataset.images,
+                tag: btn.dataset.tag,
+                title: btn.dataset.title,
+                stack: btn.dataset.stack,
+                desc: btn.dataset.desc,
+            }));
+        });
+        lbClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox(); });
+    </script>
+</body>
+</html>
